@@ -49,6 +49,7 @@ print(a | b)
 print(a & b)
 print(a - b)
 print(b - a)
+print(a^b)
 # falta diferencia simetrica que devuelve los datos que no se repitan en ninguna de los dos conjuntos
 
 

@@ -1,17 +1,22 @@
 import random
-
+nombre = input("Tu nombre es?")
 class Alumno():
-    nombre = "Marco"
-    nota = int
     
-    def notas(Alumno):
-        Alumno.nota = random.randint(0,10)
-        if Alumno.nota >= 7:
-            print("Tu nota es", Alumno.nota)
-            print(Alumno.nombre, "Has aprobado la materia")
+    def __init__(self, nombre, n):
+        self.name = nombre
+        self.nota = n
+    
+    def info(self):
+        print("El nombre del Alumno es", self.name)
+        print("Su nota es", self.nota)
+    
+    def notas(self):
+        if self.nota >= 7:
+            print(self.nota, "Has aprobado la materia")
         else:
-            print("Tu nota es", Alumno.nota)
-            print(Alumno.nota, "No alcanza para aprobar")
+            print(self.nota, "No alcanza para aprobar")
+        
 
-persona = Alumno()
-print(persona.notas())
+persona = Alumno(nombre, random.randint(0,10))
+persona.info()
+persona.notas()

@@ -14,7 +14,7 @@ def suma(a, b):
     
 # esta funcion toma los numeros impares y los suma con el reduce
 numeros = filter(numImpar, numbers)
-#print(list(numeros))
+print(list(numeros))
 
 resultado = reduce(suma, numeros)
 # en teoria hasta aca deberia mostrar el lsitado de numero en rango y el filtrado por impares

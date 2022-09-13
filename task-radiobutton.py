@@ -1,6 +1,7 @@
-from curses import window
-import tkinter
+from tkinter import *
 
-window = tkinter.Tk()
+
+
+window = Tk()
 
 window.mainloop()

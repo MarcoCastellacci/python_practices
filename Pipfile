@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pysqlite3 = "*"
+django = "*"
 
 [dev-packages]
 

@@ -1,35 +1,51 @@
-from distutils.cmd import Command
-from multiprocessing import Value
 import tkinter
 from tkinter import ttk
 from tkinter import Label
-import random
 
 window = tkinter.Tk()
 window.title('Task Window')
 window.columnconfigure(0, weight=1)
 window.columnconfigure(1, weight=3)
-text_ = Label(window)
 
-def juego_num(resp):
-    num = random.randint(0,100)
-    if num < resp:
-        text_.config(text= 'Your Number is Bigger')
-    elif num > resp:    
-        text_.config(text= 'Your Number is Smaller')
-    else:
-        text_.config(text= 'Your Number is Correct')    
-        
-num = tkinter.IntVar()
-num_obtenido = int(num.get())
-num_entry = ttk.Entry(textvariable=num)
-res_button = ttk.Button(window, text='Start Play', command=juego_num(num_obtenido))
+buttons = tkinter.StringVar()
+texto= tkinter.StringVar()
+
+def buttonSelected():
+    selected= "Your Selection is " + buttons.get()
+    text_selected.config(text=selected)
+    print(buttons.get())
+    
+def mostrartexto():
+    inputText= "Your Name is " + texto.get()
+    name_user.config(text=inputText)
+    print(texto.get())    
+
+def restart():
+    buttons.set(None)
+    texto.set('')
+    text_selected.config(text="")
+    name_user.config(text="")
+
+radio_button1 = ttk.Radiobutton(window, text="Radio Button 1", value=1, variable=buttons, command=buttonSelected)
+radio_button2 = ttk.Radiobutton(window, text="Radio Button 2", value=2, variable=buttons, command=buttonSelected)
+radio_button3 = ttk.Radiobutton(window, text="Radio Button 3", value=3, variable=buttons, command=buttonSelected)
+
+clear_button = ttk.Button(window, text='Clear Selection', command=restart)
+username= ttk.Entry(window, text='Put your Name', textvariable=texto )
+ok_button= ttk.Button(window, text='OK', command=mostrartexto)
+
+radio_button1.grid(row=0,column=0, padx=5, pady=5)
+radio_button2.grid(row=0,column=1, padx=5, pady=5)
+radio_button3.grid(row=0,column=2, padx=5, pady=5)
+clear_button.grid(row=1, column=0, padx=5, pady=5)
+username.grid(row=2, column=1, pady=20, padx=20)
+ok_button.grid(row=3, column=0, padx=5, pady=5)
 
 
-num_entry.grid(row=0, column=0, padx=15, pady=15)
-res_button.grid(row=1, column=0, padx=5, pady=5)
 
-
-text_.grid()
+name_user = Label(window)
+text_selected = Label(window)
+text_selected.grid()
+name_user.grid()
 
 window.mainloop()
